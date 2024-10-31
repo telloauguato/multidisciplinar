@@ -52,7 +52,7 @@ export default function Search() {
             <SearchIcon className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-stone-500 dark:text-stone-400" />
             <Input
               className="md:w-full rounded-md dark:bg-background/95 bg-background border h-9 pl-10 pr-0 sm:pr-4 text-sm shadow-sm overflow-ellipsis"
-              placeholder="Search documentation..."
+              placeholder="Buscar..."
               type="search"
             />
             <div className="sm:flex hidden absolute top-1/2 -translate-y-1/2 right-2 text-xs font-medium font-mono items-center gap-0.5 dark:bg-stone-900 bg-stone-200/65 p-1 rounded-sm">
@@ -62,19 +62,19 @@ export default function Search() {
           </div>
         </DialogTrigger>
         <DialogContent className="p-0 max-w-[650px] sm:top-[38%] top-[45%] !rounded-md">
-          <DialogTitle className="sr-only">Search</DialogTitle>
+          <DialogTitle className="sr-only">Buscar</DialogTitle>
           <DialogHeader>
             <input
               value={searchedInput}
               onChange={(e) => setSearchedInput(e.target.value)}
-              placeholder="Type something to search..."
+              placeholder="Digite a sua busca..."
               autoFocus
               className="h-14 px-6 bg-transparent border-b text-[14px] outline-none"
             />
           </DialogHeader>
           {filteredResults.length == 0 && searchedInput && (
             <p className="text-muted-foreground mx-auto mt-2 text-sm">
-              No results found for{" "}
+              Nenhum resultado foi encontrado para{" "}
               <span className="text-primary">{`"${searchedInput}"`}</span>
             </p>
           )}

@@ -40,7 +40,7 @@ export default async function BlogPage({ params: { slug } }: PageProps) {
         })}
         href="/blog"
       >
-        <ArrowLeftIcon className="w-4 h-4 mr-1.5" /> Back to blog
+        <ArrowLeftIcon className="w-4 h-4 mr-1.5" /> Voltar para o Blog
       </Link>
       <div className="flex flex-col gap-3 pb-7 w-full mb-2">
         <p className="text-muted-foreground text-sm">
@@ -50,7 +50,7 @@ export default async function BlogPage({ params: { slug } }: PageProps) {
           {res.frontmatter.title}
         </h1>
         <div className="mt-6 flex flex-col gap-3">
-          <p className="text-sm text-muted-foreground">Posted by</p>
+          <p className="text-sm text-muted-foreground">Postado por</p>
           <Authors authors={res.frontmatter.authors} />
         </div>
       </div>
