@@ -76,7 +76,7 @@ export default function Blog({ params }) {
               : `/og?title=${encodeURIComponent(post.metadata.title)}`,
             url: `${baseUrl}/projetos/${post.slug}`,
             author: {
-              '@type': 'Professor Marcelo Augusto',
+              '@type': post.metadata.author,
               name: 'Multidisciplinar',
             },
           }),
@@ -87,9 +87,12 @@ export default function Blog({ params }) {
       </h1>
       <div className="flex justify-between items-center mt-2 mb-8 text-sm">
         <p className="text-sm text-neutral-600 dark:text-neutral-400">
-          {formatDate(post.metadata.publishedAt)}
+          {formatDate(post.metadata.publishedAt, true)} por <span className='font-bold'>{post.metadata.author}</span>
         </p>
       </div>
+      {post.metadata.bncc?.split(' ').map(bncc => (<code key={bncc} className="relative rounded bg-muted px-[0.3rem] py-[0.2rem] font-mono text-sm font-semibold">
+        {bncc}
+      </code>))}
       <article className="prose">
         <CustomMDX source={post.content} />
       </article>

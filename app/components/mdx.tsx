@@ -6,23 +6,25 @@ import React from 'react'
 
 function Table({ data }) {
   let headers = data.headers.map((header, index) => (
-    <th key={index}>{header}</th>
+    <th key={index} className='h-10 px-2 text-left align-middle font-medium text-muted-foreground [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px]'>{header}</th>
   ))
   let rows = data.rows.map((row, index) => (
-    <tr key={index}>
+    <tr key={index} className='border-b transition-colors hover:bg-muted/50 data-[state=selected]:bg-muted'>
       {row.map((cell, cellIndex) => (
-        <td key={cellIndex}>{cell}</td>
+        <td key={cellIndex} className='p-2 align-middle [&:has([role=checkbox])]:pr-0 [&>[role=checkbox]]:translate-y-[2px] text-wrap first:font-bold'>{cell}</td>
       ))}
     </tr>
   ))
 
   return (
-    <table>
-      <thead>
-        <tr>{headers}</tr>
-      </thead>
-      <tbody>{rows}</tbody>
-    </table>
+    <div className="relative w-full overflow-auto">
+      <table className='w-full caption-bottom text-sm'>
+        <thead className='[&_tr]:border-b'>
+          <tr>{headers}</tr>
+        </thead>
+        <tbody className='[&_tr:last-child]:border-0'>{rows}</tbody>
+      </table>
+    </div>
   )
 }
 

@@ -5,6 +5,8 @@ type Metadata = {
   title: string
   publishedAt: string
   summary: string
+  author: string
+  bncc?: string
   image?: string
 }
 
@@ -66,19 +68,26 @@ export function formatDate(date: string, includeRelative = false) {
 
   let formattedDate = ''
 
-  if (yearsAgo > 0) {
-    formattedDate = `${yearsAgo}y ago`
-  } else if (monthsAgo > 0) {
-    formattedDate = `${monthsAgo}mo ago`
-  } else if (daysAgo > 0) {
-    formattedDate = `${daysAgo}d ago`
+  if (yearsAgo > 1) {
+    formattedDate = `${yearsAgo} anos atrás`;
+  } else if (yearsAgo === 1) {
+    formattedDate = "Ano passado";
+  } else if (monthsAgo > 1) {
+    formattedDate = `${monthsAgo} meses atrás`;
+  } else if (monthsAgo === 1) {
+    formattedDate = "Mês passado";
+  } else if (daysAgo > 1) {
+    formattedDate = `${daysAgo} dias atrás`;
+  } else if (daysAgo === 1) {
+    formattedDate = "Ontem";
   } else {
-    formattedDate = 'Today'
+    formattedDate = "Hoje";
   }
 
+
   let fullDate = targetDate.toLocaleString('pt-BR', {
-    month: 'long',
-    day: 'numeric',
+    month: 'short',
+    day: '2-digit',
     year: 'numeric',
   })
 
